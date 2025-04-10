@@ -1,0 +1,255 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Base colors */
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    /* Card */
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    /* Popover */
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    /* Primary - Green - More saturated now */
+    --primary: 93 50% 38%;  /* #5d8430 with increased saturation */
+    --primary-foreground: 210 40% 98%;
+
+    /* Secondary */
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    /* Muted */
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    /* Accent - Now green instead of matching primary */
+    --accent: 93 50% 38%; /* #5d8430 */
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    /* Destructive */
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    /* Border & Input */
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 93 50% 38%; /* #5d8430 */
+
+    /* Dark blue accent - Reduced prominence */
+    --dark-blue: 214 76% 12%;  /* #0a1c34 */
+    --dark-blue-hover: 214 65% 18%;
+
+    /* Border Radius */
+    --radius: 0.5rem;
+
+    /* Sidebar - More green emphasis */
+    --sidebar-background: 93 30% 95%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 93 50% 38%; /* #5d8430 */
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 93 50% 38%; /* #5d8430 */
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 93 45% 92%;
+    --sidebar-ring: 93 45% 73%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Primary - Green - More vibrant in dark mode */
+    --primary: 93 60% 45%; /* Brighter #5d8430 */
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    /* Accent - Green more visible on dark backgrounds */
+    --accent: 93 60% 45%; /* Brighter #5d8430 */
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 93 55% 65%;
+
+    /* Sidebar - Green emphasized, blue reduced */
+    --sidebar-background: 214 60% 15%; /* Lighter #0a1c34 */
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 93 60% 45%; /* Brighter #5d8430 */
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 93 60% 45%; /* Brighter #5d8430 */
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 214 50% 25%;
+    --sidebar-ring: 93 55% 65%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  .auth-bg {
+    @apply bg-gradient-to-br from-green-light to-white dark:from-green-base/30 dark:to-darkblue-base/80;
+  }
+}
+
+@layer components {
+  .progress-ring circle {
+    @apply transition-all duration-700 ease-in-out;
+  }
+  
+  .checklist-item {
+    @apply transition-all duration-300 hover:bg-accent/30;
+  }
+  
+  .checklist-item.completed {
+    @apply text-muted-foreground;
+  }
+  
+  /* Dark blue accent styles */
+  .accent-dark-blue {
+    @apply text-blue-900 dark:text-blue-400;
+  }
+  
+  .bg-accent-dark-blue {
+    @apply bg-blue-900 dark:bg-blue-800;
+  }
+  
+  .border-accent-dark-blue {
+    @apply border-blue-900 dark:border-blue-700;
+  }
+  
+  /* Auth page animations */
+  .auth-card {
+    @apply transition-all duration-500 shadow-lg hover:shadow-xl;
+  }
+  
+  .auth-input {
+    @apply transition-all duration-300 border-2 focus:border-primary;
+  }
+  
+  .auth-button {
+    @apply transition-all duration-300 transform hover:scale-[1.02];
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(5deg);
+  }
+  100% {
+    transform: translateY(5px) rotate(-5deg);
+  }
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .5;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fade-in 0.5s ease-out forwards;
+  }
+  
+  .animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite alternate;
+  }
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #68b046aa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #72c90aaa);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
